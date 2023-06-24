@@ -36,7 +36,7 @@ void bubble_sort(int *array, size_t size)
  * @array: The array to check if its swapped
  * @size: The size of the array
  *
- * Returns: 0 if not sorted, 1 if sorted
+ * Return: 0 if not sorted, 1 if sorted
  */
 int issorted(int *array, size_t size)
 {
