@@ -8,50 +8,25 @@
  */
 void bubble_sort(int *array, size_t size)
 {
-	size_t i;
+	size_t i, j;
 	int sorted;
 
-	sorted = 0;
-
-	while (!sorted)
+	for (i = 0; i < size - 1; i++)
 	{
-		sorted = issorted(array, size);
-
-		for (i = 0; i < size - 1; i++)
+		sorted = 1;
+		for (j = 0; j < size - i - 1; j++)
 		{
-			if (array[i] > array[i + 1])
+			if (array[j] > array[j + 1])
 			{
-				array[i] ^= array[i + 1];
-				array[i + 1] ^= array[i];
-				array[i] ^= array[i + 1];
+				array[j] ^= array[j + 1];
+				array[j + 1] ^= array[j];
+				array[j] ^= array[j + 1];
+				sorted = 0;
 				print_array(array, size);
 			}
 		}
-	}
-}
 
-/**
- * issorted - Checks the order of the array
- *
- * @array: The array to check if its swapped
- * @size: The size of the array
- *
- * Return: 0 if not sorted, 1 if sorted
- */
-int issorted(int *array, size_t size)
-{
-	int ret;
-	size_t i;
-
-	for (i = 0; i < size - 2; i++)
-	{
-		ret = 1;
-		if (array[i] > array[i + 1])
-		{
-			ret = 0;
+		if (sorted)
 			break;
-		}
 	}
-
-	return (ret);
 }
