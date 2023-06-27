@@ -4,7 +4,7 @@
  * insertion_sort_list - Implements insertion sort algorithm
  * on a doubly linked list.
  *
- * @list - Pointer to a pointer to the doubly linked list
+ * @list: Pointer to a pointer to the doubly linked list
  */
 void insertion_sort_list(listint_t **list)
 {
