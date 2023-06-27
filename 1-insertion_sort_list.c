@@ -6,27 +6,37 @@
  *
  * @list - Pointer to a pointer to the doubly linked list
  */
-void insertion_sort_list(listint **list)
+void insertion_sort_list(listint_t **list)
 {
-	int x;
+	listint_t *temp, *current;
 
-	while(list)
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
+		return;
+
+	current = (*list)->next;
+
+	while(current)
 	{
-		if (list->next->n < list->n)
+		while (current->prev && current->n < current->prev->n)
 		{
-			temp = list;
-			list->prev->next = list->next;
-			list->next->next = temp; /*Does this swap make sense???*/
+			temp = current->prev;
+			temp->next = current->next;
 
-			while(list->prev)
-			{
-				if (list->prev->n > /*Okay, how do I refer to the node to move???*/)
-				{
-					/* Move node till node->n > node->next->n */
-					/* Print the list */
-				}
-			}
+			if (current->next)
+				current->next->prev = temp;
+
+			current->prev = temp->prev;
+			current->next = temp;
+
+			if (temp->prev)
+				temp->prev->next = current;
+			else
+				*list = current;
+
+			temp->prev = current;
+
+			print_list(*list);
 		}
-		list = list->next;
+		current = current->next;
 	}
 }
